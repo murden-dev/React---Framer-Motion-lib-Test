@@ -1,26 +1,88 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { motion, AnimatePresence } from "framer-motion"
 
+const containerVariants = {
+  active: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.4,
+      when: "beforeChildren"
+    }
+  },
+  disabled: {
+    scale: .8,
+    opacity: .5,
+    transition: {
+      staggerChildren: 0.1,
+      staggerDirection: -1,
+      when: "afterChildren"
+    }
+  }
+}
+
+const innerVariants = {
+  active: {
+    opacity: 1,
+    y: "0px"
+  },
+  disabled: {
+    opacity: 0,
+    y: "50px",
+    transition: {
+      duration: .15
+    }
+  }
+}
+
 function App() {
+
+  const [isToggled, setToggle] = useState(false);
+
   return (
     <AnimatePresence>
     <div className="App-header">
-    <motion.div initial={{scale: 0.9, y: 50, opacity: 0}} animate={{scale: 1, y:0, opacity: 1}}transition = {{ delay: .5 }}
- className="App">
+    <motion.div className="App">
       <header className="App-header">
         <motion.div
+        key="container"
         onContextMenu={(e)=> e.preventDefault()}
-        drag
-        dragConstraints={{top: 0, right: 0, bottom: 0, left: 0}}
-        whileTap={{scale: 1.15}}
-        whileHover={{scale: .9}}
-        animate={{rotate: [0, 360]}}
-        transition={{type: "spring", stiffness: 200, damping: 20, duration: 12, loop: Infinity}}
+        initial={"disabled"}
+        animate={
+          isToggled
+          ? "active"
+          : "disabled"
+        }
+        exit={"exit"}
+        variants={containerVariants}
         className="LogoAnimation"
         >
-          <img 
+          <motion.img
+          key="img1"
+          drag
+          dragConstraints={{top: 0, right: 0, bottom: 0, left: 0}}
+          variants={innerVariants}
+          onClick={() => {
+            setToggle(!isToggled)
+          }}
+          src={logo} className=" App-logo" alt="logo" 
+          />
+          <motion.img
+          key="img2"
+          drag
+          dragConstraints={{top: 0, right: 0, bottom: 0, left: 0}}
+          variants={innerVariants}
+          onClick={() => setToggle(!isToggled)}
+          src={logo} className="App-logo" alt="logo" 
+          />
+          <motion.img
+          key="img3"
+          drag
+          dragConstraints={{top: 0, right: 0, bottom: 0, left: 0}}
+          variants={innerVariants}
+          onClick={() => setToggle(!isToggled)}
           src={logo} className="App-logo" alt="logo" 
           />
         </motion.div>

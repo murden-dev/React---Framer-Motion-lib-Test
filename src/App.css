@@ -3,12 +3,14 @@
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  height: 20vmin;
 }
 
 .LogoAnimation {
   user-select: none;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .App-header {
