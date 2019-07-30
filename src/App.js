@@ -11,16 +11,30 @@ function App() {
  className="App">
       <header className="App-header">
         <motion.div
+        onContextMenu={(e)=> e.preventDefault()}
         drag
         dragConstraints={{top: 0, right: 0, bottom: 0, left: 0}}
-        whileTap={{scale: 0.75}} whileHover={{scale: 1.2}} transition={{type: "spring", stiffness: 200, damping: 20}}>
-          <img src={logo} className="App-logo" alt="logo" />
+        whileTap={{scale: 1.15}}
+        whileHover={{scale: .9}}
+        animate={{rotate: [0, 360]}}
+        transition={{type: "spring", stiffness: 200, damping: 20, duration: 12, loop: Infinity}}
+        className="LogoAnimation"
+        >
+          <img 
+          src={logo} className="App-logo" alt="logo" 
+          />
         </motion.div>
-        <motion.p animate={{y: 0}} initial={{y: 50}}
+        <motion.p
+        initial={{y: 50}}
+        animate={{y: 0}}
 >
           Edit <code>src/App.js</code> and save to reload.
         </motion.p>
-        <motion.a whileTap={{scale: 0.9}} whileHover={{scale: 1.05}} animate={{y: 0}} initial={{y: 50}}
+        <motion.a
+        whileTap={{scale: 0.9}}
+        whileHover={{scale: 1.05}}
+        initial={{y: 50}}
+        animate={{y: 0}}
           className="App-link"
           href="https://murden.dev"
           target="_blank"
