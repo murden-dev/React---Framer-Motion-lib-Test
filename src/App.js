@@ -7,6 +7,7 @@ const containerVariants = {
   active: {
     scale: 1,
     opacity: 1,
+    boxShadow: "0px 0px 0px 8px #60dafb",
     transition: {
       staggerChildren: 0.4,
       when: "beforeChildren"
@@ -15,9 +16,10 @@ const containerVariants = {
   disabled: {
     scale: .8,
     opacity: .5,
+    boxShadow: "0px 0px 0px 0px #60dafb",
     transition: {
-      staggerChildren: 0.1,
-      staggerDirection: -1,
+      duration: .26,
+      staggerChildren: 0,
       when: "afterChildren"
     }
   }
@@ -26,14 +28,29 @@ const containerVariants = {
 const innerVariants = {
   active: {
     opacity: 1,
-    y: "0px"
+    y: "0px",
+    filter: "grayscale(0%)",
+    transition: {
+      duration: .26
+    }
   },
   disabled: {
     opacity: 0,
     y: "50px",
+    filter: "grayscale(100%)",
     transition: {
-      duration: .15
+      duration: .13
     }
+  },
+  rotating: {
+    rotate: 360,
+    transition: {
+      loop: Infinity,
+      duration: 4
+    }
+  },
+  scaled: {
+    scale: .85
   }
 }
 
@@ -63,6 +80,8 @@ function App() {
           key="img1"
           drag
           dragConstraints={{top: 0, right: 0, bottom: 0, left: 0}}
+          whileTap={"rotating"}
+          whileHover={"scaled"}
           variants={innerVariants}
           onClick={() => {
             setToggle(!isToggled)
@@ -73,6 +92,8 @@ function App() {
           key="img2"
           drag
           dragConstraints={{top: 0, right: 0, bottom: 0, left: 0}}
+          whileTap={"rotating"}
+          whileHover={"scaled"}
           variants={innerVariants}
           onClick={() => setToggle(!isToggled)}
           src={logo} className="App-logo" alt="logo" 
@@ -81,6 +102,8 @@ function App() {
           key="img3"
           drag
           dragConstraints={{top: 0, right: 0, bottom: 0, left: 0}}
+          whileTap={"rotating"}
+          whileHover={"scaled"}
           variants={innerVariants}
           onClick={() => setToggle(!isToggled)}
           src={logo} className="App-logo" alt="logo" 
