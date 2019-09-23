@@ -1,0 +1,134 @@
+$--primary: #CFFF63;
+$--primary-light: #DCFC93;
+$--secondary: #7641E7;
+$--text-dark: #333333;
+$--text-light: #F2F2F2;
+
+$--secondary-gradient: linear-gradient(#837AEF 0%, #8F44EF 60.94%, #7D22D8 100%);
+
+.form {
+  margin-top: auto;
+  margin-bottom: 6rem;
+  width: 80%;
+  z-index: 999;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.absolute.center {
+  left: 50%;
+  z-index: 4;
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  right: 0;
+}
+
+.top {
+  position: absolute;
+  left: 25%;
+  bottom: 0;
+  z-index: 1;
+}
+
+.chao {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 999;
+}
+
+.right {
+  position: absolute;
+  right: 25%;
+  bottom: 0;
+  z-index: 1;
+}
+
+.left {
+  position: absolute;
+  left: 10%;
+  bottom: 0;
+  z-index: 1;
+}
+
+.container {
+  background: $--secondary-gradient;
+  height: 100vh;
+  max-height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  display: flex;
+}
+
+.app {
+  padding-top: 2.4rem;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(circle at top, $--secondary, $--secondary 55.999%, $--primary-light 56%, $--primary-light);
+}
+
+.app h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: $--text-light;
+  margin-top: 0;
+  margin-bottom: 5rem;
+}
+
+.app h1 span {
+  color: $--primary;
+}
+
+.app p {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: $--primary;
+  margin-top: 2.6rem;
+  margin-bottom: 0;
+}
+
+@media (pointer: coarse) {
+  .marvel-device.iphone-x,
+  .marvel-device.iphone-x .app {
+    display: none !important;
+  }
+  .container {
+    padding: 0;
+  }
+  .app {
+    padding-top: 1.5rem;
+  }
+
+  .app h1 {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (pointer: fine) {
+  .container {
+    background: $--secondary-gradient;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .marvel-device.iphone-x .app {
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+  }
+  .container>.app {
+    display: none !important;
+  }
+}
