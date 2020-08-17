@@ -165,7 +165,7 @@ class AppScreen extends Component {
           style={{background: '#f7f7f7'}}/>
           
           <TextField
-          label="Senha"
+          label="Password"
           margin="dense"
           variant="outlined"
           type="password"
@@ -178,13 +178,13 @@ class AppScreen extends Component {
           margin="normal"
           color="primary"
           fullWidth
-          style={{marginBottom: '1rem'}}>Entrar</Button>
+          style={{marginBottom: '1rem'}}>Login</Button>
           <Button
           variant="outlined"
           size="medium"
           margin="normal"
           color="primary"
-          fullWidth>Cadastre-se</Button>
+          fullWidth>Sign Up</Button>
       </motion.div>
       </ThemeProvider>
     </div>
